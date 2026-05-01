@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Favorites from "./pages/Favorites";
@@ -10,10 +11,10 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/favorites" element={<Layout><Favorites /></Layout>} />
+        <Route path="/chat" element={<Layout><Chat /></Layout>} />
       </Routes>
     </BrowserRouter>
   );

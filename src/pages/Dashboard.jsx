@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Dashboard = () => {
-  const [history, setHistory] = useState([]);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("moodHistory")) || [];
-    setHistory(data);
-  }, []);
+  const history = JSON.parse(localStorage.getItem("moodHistory")) || [];
 
   return (
     <div>
-      <h2>📊 Mood History</h2>
+      <h2>📊 Dashboard</h2>
+
+      <p>Total moods: {history.length}</p>
+
       {history.map((m, i) => (
-        <p key={i}>{m}</p>
+        <p key={i}>👉 {m}</p>
       ))}
     </div>
   );

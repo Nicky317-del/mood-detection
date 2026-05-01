@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Favorites = () => {
-  const [fav, setFav] = useState([]);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("fav")) || [];
-    setFav(data);
-  }, []);
+  const fav = JSON.parse(localStorage.getItem("fav")) || [];
 
   return (
     <div>
       <h2>❤️ Favorites</h2>
-      {fav.map((song, i) => (
-        <p key={i}>{song.trackName}</p>
-      ))}
+
+      {fav.length === 0 ? (
+        <p>No favorites yet</p>
+      ) : (
+        <div className="grid">
+          {fav.map((song, i) => (
+            <div key={i} className="card">
+              <img src={song.artworkUrl100} />
+              <h4>{song.trackName}</h4>
+              <p>{song.artistName}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
